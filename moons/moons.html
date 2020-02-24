@@ -1,0 +1,164 @@
+<! DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Moons</title>
+		<link rel="stylesheet" href="../style.css">
+	</head>
+	<body>
+		<header>
+			<span>Moons</span>
+			<ul id="menu">
+				<li><a href="../index.html">Stars</a></li>
+				<li><a href="../planets/planets.html">Planets</a></li>
+				<li><a href="../elements/elements.html">Elements</a></li>
+			</ul>
+		</header>
+		<main>
+			<div class="filter">
+				<span>Filters</span>
+				<label for="filter-name">Name</label>
+				<div class="filter-input"><input type="text" name="filter-name"></div>
+
+				<label for="filter-planet">Planet</label>
+				<div class="filter-input"><input type="text" name="filter-planet"></div>
+
+				<label for="filter-composition">Composition</label>
+				<div class="filter-input"><input type="text" name="filter-composition"></div>
+
+				<button id="filter-update-button">Update</button>
+			</div>
+			<table bgcolor = "FFFFFF" style="width:80%">
+			  <tr>
+				<th></th>
+				<th>Name</th>
+				<th>Planet</th>
+				<th>Diameter</th>
+			  </tr>
+			  <tr>
+				<td><img src="moon.jpg" alt="Moon" style="width:auto;height:150px;"></td>
+				<td>Luna</td>
+				<td>Earth</td>
+				<td>2159 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="phobos.jpg" alt="Phobos" style="width:auto;height:150px;"></td>
+				<td>Phobos</td>
+				<td>Mars</td>
+				<td>8 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="deimos.jpg" alt="Deimos" style="width:auto;height:150px;"></td>
+				<td>Deimos</td>
+				<td>Mars</td>
+				<td>14 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="io.jpg" alt="Io" style="width:auto;height:150px;"></td>
+				<td>Io</td>
+				<td>Jupiter</td>
+				<td>2264 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="europa.jpg" alt="Europa" style="width:auto;height:150px;"></td>
+				<td>Europa</td>
+				<td>Jupiter</td>
+				<td>1940 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="callisto.jpg" alt="Callisto" style="width:auto;height:150px;"></td>
+				<td>Callisto</td>
+				<td>Jupiter</td>
+				<td>2995 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="mimas.jpg" alt="Mimas" style="width:auto;height:150px;"></td>
+				<td>Mimas</td>
+				<td>Saturn</td>
+				<td>246 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="enceladus.jpg" alt="Enceladus" style="width:auto;height:150px;"></td>
+				<td>Enceladus</td>
+				<td>Saturn</td>
+				<td>313 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="tethys.jpg" alt="Tethys" style="width:auto;height:150px;"></td>
+				<td>Tethys</td>
+				<td>Saturn</td>
+				<td>660 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="umbriel.jpg" alt="Umbriel" style="width:auto;height:150px;"></td>
+				<td>Umbriel</td>
+				<td>Uranus</td>
+				<td>727 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="titania.jpg" alt="Titania" style="width:auto;height:150px;"></td>
+				<td>Titania</td>
+				<td>Uranus</td>
+				<td>980 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="oberon.jpg" alt="Oberon" style="width:auto;height:150px;"></td>
+				<td>Oberon</td>
+				<td>Uranus</td>
+				<td>946 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="triton.jpg" alt="Triton" style="width:auto;height:150px;"></td>
+				<td>Triton</td>
+				<td>Neptune</td>
+				<td>1682 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  <tr>
+				<td><img src="charon.jpg" alt="Charon" style="width:auto;height:150px;"></td>
+				<td>Charon</td>
+				<td>Pluto</td>
+				<td>753 mi</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			</table>
+
+			<div id="add-item-form">
+				<div id="form-header">
+					<span>Add Moon</span>
+				</div>
+				<div class="form-input">
+					<label for="form-name-input">Moon name</label>
+					<input type="text" id="form-name-input"></input>
+				</div>
+				<div class="form-input">
+					<label for="form-image-input">Image url</label>
+					<input type="text" id="form-image-input"></input>
+				</div>
+				<div class="form-input">
+					<label for="form-planet-input">Planet orbited</label>
+					<input type="text" id="form-planet-input"></input>
+				</div>
+				<div class="form-input">
+					<label for="form-diameter-input">Diameter</label>
+					<input type="text" id="form-diameter-input"></input>
+				</div>
+
+				<button type="button" id="form-accept">Add Moon</button>
+				<button type="button" id="form-cancel">Cancel</button>
+			</div>
+		</main>
+	</body>
+</html>
