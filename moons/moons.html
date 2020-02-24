@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>Moons</title>
 		<link rel="stylesheet" href="../style.css">
+		<script src="../index.js" charset="utf-8" defer></script>
 	</head>
 	<body>
 		<header>
@@ -27,6 +28,8 @@
 				<div class="filter-input"><input type="text" name="filter-composition"></div>
 
 				<button id="filter-update-button">Update</button>
+				<label>or</label>
+				<button id="add-item-button">Add A New Moon</button>
 			</div>
 			<table bgcolor = "FFFFFF" style="width:80%">
 			  <tr>
@@ -135,7 +138,7 @@
 			  </tr>
 			</table>
 
-			<div id="add-item-form">
+			<div id="add-item-form" class="hidden">
 				<div id="form-header">
 					<span>Add Moon</span>
 				</div>
@@ -155,9 +158,10 @@
 					<label for="form-diameter-input">Diameter</label>
 					<input type="text" id="form-diameter-input"></input>
 				</div>
-
-				<button type="button" id="form-accept">Add Moon</button>
-				<button type="button" id="form-cancel">Cancel</button>
+				<div id="form-buttons">
+					<button type="button" id="form-accept">Add Star</button>
+					<button type="button" id="form-cancel">Cancel</button>
+				</div>
 			</div>
 		</main>
 	</body>
