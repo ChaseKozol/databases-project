@@ -56,8 +56,14 @@ li a {
 	display: inline-block;
 }
 
-#filter-update-button {
-	margin 0px 20px;
+#filter-input-container {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#filter-update-button, #add-item-button {
+	margin-left: 20px;
+
 }
 
 #add-item-form {
@@ -71,9 +77,40 @@ table {
 	text-align: center;
 }
 
-td button {
+button {
 	color: #ffffff;
 	background-color: #4d4d4d;
 	border: none;
 	padding: 5px;
+}
+
+#add-item-form {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 400px;
+	height: 300px;
+	margin-top: -150px;
+	margin-left:-200px;
+	background-color: rgba(30, 30, 30, 0.8);
+	z-index: 1000;
+	text-align: center;
+}
+
+#form-header {
+	margin: 20px;
+	font-size: 1.5em;
+}
+
+.form-input {
+	margin: 10px auto;
+}
+
+#form-buttons {
+	width: 140px;
+	margin: 0 auto;
+}
+
+.hidden {
+	display: none;
 }
