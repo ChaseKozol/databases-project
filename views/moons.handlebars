@@ -1,0 +1,68 @@
+<header>
+	<span>Moons</span>
+	<ul id="menu">
+		<li><a href="/index.html">Stars</a></li>
+		<li><a href="/planets/planets.html">Planets</a></li>
+		<li><a href="/elements/elements.html">Elements</a></li>
+	</ul>
+</header>
+<main>
+	<div class="filter">
+		<span>Filters</span>
+		<label for="filter-name">Name</label>
+		<div class="filter-input"><input type="text" name="filter-name"></div>
+
+		<label for="filter-planet">Planet</label>
+		<div class="filter-input"><input type="text" name="filter-planet"></div>
+
+		<label for="filter-composition">Composition</label>
+		<div class="filter-input"><input type="text" name="filter-composition"></div>
+
+		<button id="filter-update-button">Update</button>
+		<label>or</label>
+		<button id="add-item-button">Add A New Moon</button>
+	</div>
+	<table>
+		<tr>
+			<th></th>
+			<th>Name</th>
+			<th>Planet</th>
+			<th>Diameter</th>
+		</tr>
+		{{#each moons}}
+		<tr>
+			<td><img src="{{name}}.jpg" alt="{{name}}" style="width:auto;height:150px;"></td>
+			<td>{{name}}</td>
+			<td>{{planet_orbiting}}</td>
+			<td>{{diameter}} mi</td>
+			<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+		</tr>
+		{{/each}}
+	</table>
+
+	<div id="add-item-form" class="hidden">
+		<div id="form-header">
+			<span>Add Moon</span>
+		</div>
+		<div class="form-input">
+			<label for="form-name-input">Moon name</label>
+			<input type="text" id="form-name-input"></input>
+		</div>
+		<div class="form-input">
+			<label for="form-image-input">Image url</label>
+			<input type="text" id="form-image-input"></input>
+		</div>
+		<div class="form-input">
+			<label for="form-planet-input">Planet orbited</label>
+			<input type="text" id="form-planet-input"></input>
+		</div>
+		<div class="form-input">
+			<label for="form-diameter-input">Diameter</label>
+			<input type="text" id="form-diameter-input"></input>
+		</div>
+		<div id="form-buttons">
+			<button type="button" id="form-accept">Add Star</button>
+			<button type="button" id="form-cancel">Cancel</button>
+		</div>
+	</div>
+</main>
