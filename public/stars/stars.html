@@ -1,0 +1,73 @@
+<! DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Stars</title>
+		<link rel="stylesheet" href="..\style.css">
+	</head>
+	<body>
+		<header>
+			<span>Stars</span>
+			<ul id="menu">
+				<li><a href="../index.html">Galaxies</a></li>
+				<li><a href="../planets/planets.html">Planets</a></li>
+				<li><a href="../moons/moons.html">Moons</a></li>
+			</ul>
+		</header>
+		<main>
+			<div class="filter">
+				<span>Filters</span>
+				<label for="filter-name">Name</label>
+				<div class="filter-input"><input type="text" name="filter-name"></div>
+
+				<label for="filter-galaxy">Galaxy</label>
+				<div class="filter-input"><input type="text" name="filter-galaxy"></div>
+
+				<label for="filter-planet">Planet</label>
+				<div class="filter-input"><input type="text" name="filter-planet"></div>
+
+				<label for="filter-composition">Composition</label>
+				<div class="filter-input"><input type="text" name="filter-composition"></div>
+
+				<button id="filter-update-button">Update</button>
+			</div>
+			<table bgcolor = "FFFFFF" style="width:80%">
+			  <tr>
+				<th></th>
+				<th>Name</th>
+				<th>System</th>
+				<th>Type</th>
+				<th>Age</th>
+			  </tr>
+			  <tr>
+				<td><img src="sol.jpg" alt="Sol" style="width:auto;height:150px;"></td>
+				<td>Sol</td>
+				<td>Solar</td>
+				<td>Yellow Dwarf</td>
+				<td>4.6 Billion</td>
+			  </tr>
+			  <tr>
+				<td><img src="a.jpg" alt="Rigil Kentaurus" style="width:auto;height:150px;"></td>
+				<td>Rigil Kentaurus</td>
+				<td>Alpha Centauri</td>
+				<td>Yellow Dwarf</td>
+				<td>NULL</td>
+			  </tr>
+			  <tr>
+				<td><img src="b.jpg" alt="Toliman" style="width:auto;height:150px;"></td>
+				<td>Toliman</td>
+				<td>Alpha Centauri</td>
+				<td>Orange Dwarf</td>
+				<td>5.3 Billion</td>
+			  </tr>
+			  <tr>
+				<td><img src="c.jpg" alt="Proxima Centauri" style="width:auto;height:150px;"></td>
+				<td>Proxima Centauri</td>
+				<td>Alpha Centauri</td>
+				<td>Red Dwarf</td>
+				<td>4.9 Billion</td>
+			  </tr>
+			</table>
+		</main>
+	</body>
+</html>

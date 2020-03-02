@@ -1,0 +1,83 @@
+<header>
+			<span>Planets</span>
+			<ul id="menu">
+				<li><a href="/index.html">Stars</a></li>
+				<li><a href="/moons/moons.html">Moons</a></li>
+				<li><a href="/elements/elements.html">Elements</a></li>
+			</ul>
+		</header>
+		<main>
+			<div class="filter">
+				<span>Filters</span>
+				<label for="filter-name">Name</label>
+				<div class="filter-input"><input type="text" name="filter-name"></div>
+
+				<label for="filter-star">Star</label>
+				<div class="filter-input"><input type="text" name="filter-star"></div>
+
+				<label for="filter-moon">Moon</label>
+				<div class="filter-input"><input type="text" name="filter-moon"></div>
+
+				<label for="filter-composition">Composition</label>
+				<div class="filter-input"><input type="text" name="filter-composition"></div>
+				
+				<button id="filter-update-button">Update</button>
+				<label>or</label>
+				<button id="add-item-button">Add A New Planet</button>
+			</div>
+			<table>
+			  <tr>
+				<th></th>
+				<th>Name</th>
+				<th>Diameter</th>
+				<th>Orbital Period</th>
+				<th>Main Star</th>
+				<th>Number Of Moons</th>
+			  </tr>
+			  {{#each planets}}
+			  <tr>
+				<td><img src="{{name}}.jpg" alt="{{name}}"></td>
+				<td>{{name}}</td>
+				<td>{{diameter}} mi</td>
+				<td>{{orbit}} ED</td>
+				<td>{{star_name}}</td>
+				<td>{{num_moons}}</td>
+				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			  </tr>
+			  {{/each}}
+			</table>
+
+			<div id="add-item-form" class="hidden">
+				<div id="form-header">
+					<span>Add Planet</span>
+				</div>
+				<div class="form-input">
+					<label for="form-name-input">Planet name</label>
+					<input type="text" id="form-name-input"></input>
+				</div>
+				<div class="form-input">
+					<label for="form-image-input">Image url</label>
+					<input type="text" id="form-image-input"></input>
+				</div>
+				<div class="form-input">
+					<label for="form-diameter-input">Planet diameter</label>
+					<input type="text" id="form-diameter-input"></input>
+				</div>
+				<div class="form-input">
+					<label for="form-period-input">Orbital Period</label>
+					<input type="text" id="form-period-input"></input>
+				</div>
+				<div class="form-input">
+					<label for="form-star-input">Star orbited</label>
+					<input type="text" id="form-star-input"></input>
+				</div>
+				<div class="form-input">
+					<label for="form-moons-input"># Moons</label>
+					<input type="text" id="form-moons-input"></input>
+				</div>
+				<div id="form-buttons">
+					<button type="button" id="form-accept">Add Star</button>
+					<button type="button" id="form-cancel">Cancel</button>
+				</div>
+			</div>
+		</main>
