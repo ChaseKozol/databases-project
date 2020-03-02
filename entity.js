@@ -19,7 +19,7 @@ module.exports = function(){
 				res.write(JSON.stringify(error));
 				res.end();
 			}
-			context.stars = results;
+			context.planets = results;
 			complete();
 		});
 	}
@@ -30,7 +30,7 @@ module.exports = function(){
 				res.write(JSON.stringify(error));
 				res.end();
 			}
-			context.stars = results;
+			context.moons = results;
 			complete();
 		});
 	}
@@ -41,7 +41,7 @@ module.exports = function(){
 				res.write(JSON.stringify(error));
 				res.end();
 			}
-			context.stars = results;
+			context.elements = results;
 			complete();
 		});
 	}
@@ -120,7 +120,7 @@ module.exports = function(){
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/');
+                res.redirect('/stars');
             }
         });
     });

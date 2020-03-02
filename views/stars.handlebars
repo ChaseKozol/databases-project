@@ -1,9 +1,9 @@
 <header>
 	<span>Stars</span>
 	<ul id="menu">
-		<li><a href="/planets/planets.html">Planets</a></li>
-		<li><a href="/moons/moons.html">Moons</a></li>
-		<li><a href="/elements/elements.html">Elements</a></li>
+		<li><a href="/planets">Planets</a></li>
+		<li><a href="/moons">Moons</a></li>
+		<li><a href="/elements">Elements</a></li>
 	</ul>
 </header>
 <main>
@@ -37,7 +37,7 @@
 		</tr>
 	  {{#each stars}}
 	  <tr>
-		<td><img src="stars/{{name}}.jpg" alt="{{name}}" style="width:auto;height:150px;"></td>
+		<td><img src="/static/stars/{{name}}.jpg" alt="{{name}}" style="width:auto;height:150px;"></td>
 		<td>{{name}}</td>
 		<td>{{system}}</td>
 		<td>{{type}}</td>
@@ -47,33 +47,14 @@
 	  {{/each}}
 	</table>
 
-	<form id="addstar" class="hidden add-item-form" action="/" method="post">
+	<div id="add-item-form" class="hidden" action="/stars" method="post">
 		<div id="form-header">
 			<span>Add Star</span>
 		</div>
-		<div class="form-input">
-			<label for="form-name-input">Star name</label>
-			<input type="text" id="form-name-input" name="name"></input>
-		</div>
-		<div class="form-input">
-			<label for="form-image-input">Image url</label>
-			<input type="text" id="form-image-input"></input>
-		</div>
-		<div class="form-input">
-			<label for="form-system-input">Star system</label>
-			<input type="text" id="form-system-input" name="system"></input>
-		</div>
-		<div class="form-input">
-			<label for="form-type-input">Star Type</label>
-			<input type="text" id="form-type-input"name="type"></input>
-		</div>
-		<div class="form-input">
-			<label for="form-age-input">Star age</label>
-			<input type="number" id="form-age-input" name="age"></input>
-		</div>
-		<div id="form-buttons">
-			<input type="submit" id="form-accept" value="Submit">Add Star</button>
-			<button type="button" id="form-cancel">Cancel</button>
-		</div>
-	</form>
+		Name: <input type="text" name="name"><br>
+		System: <input type="text" name="system"><br>
+		Type: <input type="text" name="type"><br>
+		Age: <input type="number" name="age"><br>
+		<input type="submit" value="Add Star">
+	</div>
 </main>
