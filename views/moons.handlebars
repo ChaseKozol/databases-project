@@ -1,9 +1,9 @@
 <header>
 	<span>Moons</span>
 	<ul id="menu">
-		<li><a href="/index.html">Stars</a></li>
-		<li><a href="/planets/planets.html">Planets</a></li>
-		<li><a href="/elements/elements.html">Elements</a></li>
+		<li><a href="/">Stars</a></li>
+		<li><a href="/planets">Planets</a></li>
+		<li><a href="/elements">Elements</a></li>
 	</ul>
 </header>
 <main>
@@ -31,7 +31,7 @@
 		</tr>
 		{{#each moons}}
 		<tr>
-			<td><img src="{{name}}.jpg" alt="{{name}}" style="width:auto;height:150px;"></td>
+			<td><img src="/static/moons/{{name}}.jpg" alt="{{name}}" style="width:auto;height:150px;"></td>
 			<td>{{name}}</td>
 			<td>{{planet_orbiting}}</td>
 			<td>{{diameter}} mi</td>
