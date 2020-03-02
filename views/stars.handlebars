@@ -47,13 +47,13 @@
 	  {{/each}}
 	</table>
 
-	<div id="add-item-form" class="hidden">
+	<form id="addstar" class="hidden add-item-form" action="/" method="post">
 		<div id="form-header">
 			<span>Add Star</span>
 		</div>
 		<div class="form-input">
 			<label for="form-name-input">Star name</label>
-			<input type="text" id="form-name-input"></input>
+			<input type="text" id="form-name-input" name="name"></input>
 		</div>
 		<div class="form-input">
 			<label for="form-image-input">Image url</label>
@@ -61,19 +61,19 @@
 		</div>
 		<div class="form-input">
 			<label for="form-system-input">Star system</label>
-			<input type="text" id="form-system-input"></input>
+			<input type="text" id="form-system-input" name="system"></input>
 		</div>
 		<div class="form-input">
 			<label for="form-type-input">Star Type</label>
-			<input type="text" id="form-type-input"></input>
+			<input type="text" id="form-type-input"name="type"></input>
 		</div>
 		<div class="form-input">
 			<label for="form-age-input">Star age</label>
-			<input type="text" id="form-age-input"></input>
+			<input type="number" id="form-age-input" name="age"></input>
 		</div>
 		<div id="form-buttons">
-			<button type="button" id="form-accept">Add Star</button>
+			<input type="submit" id="form-accept" value="Submit">Add Star</button>
 			<button type="button" id="form-cancel">Cancel</button>
 		</div>
-	</div>
+	</form>
 </main>
