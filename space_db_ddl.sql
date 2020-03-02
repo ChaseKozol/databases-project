@@ -15,7 +15,7 @@ CREATE TABLE `stars` (
 	`name` varchar(255) NOT NULL,
 	`system` varchar(255),
 	`type` varchar(255) NOT NULL,
-	`age` int(11),
+	`age` bigint(11),
 	PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
