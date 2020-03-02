@@ -15,7 +15,7 @@ module.exports = function(){
 
 	/*Display stars*/
 
-	router.get('/', function(req, res){
+	router.get('/', function(req, res){	
 		var callbackCount = 0;
 		var context = {};
 		var mysql = req.app.get('mysql');
