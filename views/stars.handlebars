@@ -47,14 +47,16 @@
 	  {{/each}}
 	</table>
 
-	<div id="add-item-form" class="hidden" action="/stars" method="post">
-		<div id="form-header">
-			<span>Add Star</span>
-		</div>
-		Name: <input type="text" name="name"><br>
-		System: <input type="text" name="system"><br>
-		Type: <input type="text" name="type"><br>
-		Age: <input type="number" name="age"><br>
-		<input type="submit" value="Add Star">
+	<div id="add-item-form" class="hidden">
+		<form id="addstar" action="/" method="post">
+			<div id="form-header">
+				<span>Add Star</span>
+			</div>
+			Name: <input type="text" name="name"><br>
+			System: <input type="text" name="system"><br>
+			Type: <input type="text" name="type"><br>
+			Age: <input type="number" name="age"><br>
+			<input type="submit" value="Add Star">
+		</form>
 	</div>
 </main>
