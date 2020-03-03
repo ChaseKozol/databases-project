@@ -125,5 +125,35 @@ module.exports = function(){
         });
     });
 
+	router.post('/planets', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO planets (name, diameter, period, num_moons) VALUES (?,?,?,?)";
+        var inserts = [req.body.name, req.body.diameter, req.body.period, req.body.num_moons];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/planets');
+            }
+        });
+    });
+
+	router.post('/moons', function(req, res){
+        var mysql = req.app.get('mysql');
+        var sql = "INSERT INTO moons (name, diameter, planet_orbiting) VALUES (?,?,?,?)";
+        var inserts = [req.body.name, req.body.diameter, req.body.planet_orbiting];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(JSON.stringify(error))
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.redirect('/moons');
+            }
+        });
+    });
+
 	return router;
 }();
