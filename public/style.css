@@ -78,6 +78,11 @@ table {
 	text-align: center;
 }
 
+table img {
+	height: 150px;
+	width: auto;
+}
+
 button {
 	color: #ffffff;
 	background-color: #4d4d4d;

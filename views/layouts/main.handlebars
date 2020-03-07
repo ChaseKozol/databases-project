@@ -5,6 +5,9 @@
 		<title>{{{title}}}</title>
 		<link rel="stylesheet" href="/static/style.css">
 		<script src="/static/index.js" charset="utf-8" defer></script>
+		{{#each jsscripts}}
+			<script src="/static/{{this}}"></script>
+		{{/each}}
 	</head>
 	<body>
 		{{{body}}}
