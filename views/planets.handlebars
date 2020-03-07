@@ -48,14 +48,14 @@
 	</table>
 
 	<div id="form-box" class="hidden">
-		<form class="add-item-form" action="/" method="post">
+		<form class="add-item-form" action="/planets" method="post">
 			<div id="form-header">
 				<span>Add Planet</span>
 			</div>
 			Name: <input type="text" name="name"><br>
 			Diameter: <input type="number" name="diameter"><br>
 			Period: <input type="number" name="period"><br>
-			Star Orbited: <input type="number" name="star_orbited"><br>
+			Star Orbited: <input type="text" name="star_name"><br>
 			# Moons: <input type="number" name="num_moons"><br>
 			<input type="submit" value="Add Planet">
 			<input type="submit" id="form-cancel" value="Cancel"
