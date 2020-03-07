@@ -47,8 +47,8 @@
 	  {{/each}}
 	</table>
 
-	<div id="add-item-form" class="hidden">
-		<form id="addstar" action="/" method="post">
+	<div id="form-box" class="hidden">
+		<form class="add-item-form" action="/" method="post">
 			<div id="form-header">
 				<span>Add Star</span>
 			</div>
@@ -57,6 +57,7 @@
 			Type: <input type="text" name="type"><br>
 			Age: <input type="number" name="age"><br>
 			<input type="submit" value="Add Star">
+			<input type="submit" id="form-cancel" value="Cancel"
 		</form>
 	</div>
 </main>

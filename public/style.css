@@ -85,15 +85,16 @@ button {
 	padding: 5px;
 }
 
-.add-item-form {
+#form-box {
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	width: 400px;
-	height: 300px;
+	height: 250px;
 	margin-top: -150px;
 	margin-left:-200px;
 	background-color: rgba(30, 30, 30, 0.8);
+	color: #ffffff;
 	z-index: 1000;
 	text-align: center;
 }
@@ -103,13 +104,8 @@ button {
 	font-size: 1.5em;
 }
 
-.form-input {
-	margin: 10px auto;
-}
-
-#form-buttons {
-	width: 140px;
-	margin: 0 auto;
+.add-item-form input {
+	margin: 5px;
 }
 
 .hidden {

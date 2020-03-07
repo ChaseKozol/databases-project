@@ -77,34 +77,19 @@
 				<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
 			  </tr>
 			</table>
-			<div id="add-item-form" class="hidden">
-				<div id="form-header">
-					<span>Add Star</span>
-				</div>
-				<div class="form-input">
-					<label for="form-name-input">Star name</label>
-					<input type="text" id="form-name-input"></input>
-				</div>
-				<div class="form-input">
-					<label for="form-image-input">Image url</label>
-					<input type="text" id="form-image-input"></input>
-				</div>
-				<div class="form-input">
-					<label for="form-system-input">Star system</label>
-					<input type="text" id="form-system-input"></input>
-				</div>
-				<div class="form-input">
-					<label for="form-type-input">Star Type</label>
-					<input type="text" id="form-type-input"></input>
-				</div>
-				<div class="form-input">
-					<label for="form-age-input">Star age</label>
-					<input type="text" id="form-age-input"></input>
-				</div>
-				<div id="form-buttons">
-					<button type="button" id="form-accept">Add Star</button>
-					<button type="button" id="form-cancel">Cancel</button>
-				</div>
+
+			<div id="form-box" class="hidden">
+				<form class="add-item-form" action="/" method="post">
+					<div id="form-header">
+						<span>Add Star</span>
+					</div>
+					Name: <input type="text" name="name"><br>
+					System: <input type="text" name="system"><br>
+					Type: <input type="text" name="type"><br>
+					Age: <input type="number" name="age"><br>
+					<input type="submit" value="Add Star">
+					<input type="submit" id="form-cancel" value="Cancel"
+				</form>
 			</div>
 		</main>
 	</body>
