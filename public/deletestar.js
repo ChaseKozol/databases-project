@@ -1,6 +1,6 @@
-function deleteStar(name){
+function deleteStar(id){
 	$.ajax({
-		url: '/' + name,
+		url: '/' + id,
 		type: 'DELETE',
 		success: function(result){
 			window.location.reload(true);

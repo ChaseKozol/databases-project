@@ -3,7 +3,7 @@ module.exports = function(){
 	var router = express.Router();
 
 	function getStars(res, mysql, context, complete){
-		mysql.pool.query("SELECT name, system, type, age FROM stars", function(error, results, fields){
+		mysql.pool.query("SELECT id, name, system, type, age FROM stars", function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
 				res.end();
@@ -14,7 +14,7 @@ module.exports = function(){
 	}
 
 	function getPlanets(res, mysql, context, complete){
-		mysql.pool.query("SELECT name, diameter, period, star_name, num_moons FROM planets INNER JOIN planet_orbit ON name = planet_orbit.planet_name", function(error, results, fields){
+		mysql.pool.query("SELECT planet_id, name, diameter, period, star_id, num_moons FROM planets INNER JOIN planet_orbit ON planets.id = planet_orbit.planet_id", function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
 				res.end();
@@ -25,7 +25,7 @@ module.exports = function(){
 	}
 
 	function getMoons(res, mysql, context, complete){
-		mysql.pool.query("SELECT name, planet_orbiting, diameter FROM moons", function(error, results, fields){
+		mysql.pool.query("SELECT id, name, planet_orbiting, diameter FROM moons", function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
 				res.end();
@@ -36,7 +36,7 @@ module.exports = function(){
 	}
 
 	function getElements(res, mysql, context, complete){
-		mysql.pool.query("SELECT name, number FROM elements", function(error, results, fields){
+		mysql.pool.query("SELECT name, id FROM elements", function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
 				res.end();
@@ -128,8 +128,8 @@ module.exports = function(){
 
 	router.post('/planets', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO planets (name, diameter, period, num_moons) VALUES (?,?,?,?)";
-        var inserts = [req.body.name, req.body.diameter, req.body.period, req.body.num_moons];
+        var sql = "INSERT INTO planets (name, diameter, period, num_moons) VALUES (?,?,?,?); INSERT INTO planet_orbit (star_name, planet_name) VALUES (SELECT id FROM stars WHERE name = ?,SELECT id FROM planets WHERE name = ?);";
+        var inserts = [req.body.name, req.body.diameter, req.body.period, req.body.num_moons, req.body.star_name, req.body.name];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
@@ -143,7 +143,7 @@ module.exports = function(){
 
 	router.post('/moons', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO moons (name, diameter, planet_orbiting) VALUES (?,?,?,?)";
+        var sql = "INSERT INTO moons (name, diameter, planet_orbiting) VALUES (?,?,?)";
         var inserts = [req.body.name, req.body.diameter, req.body.planet_orbiting];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
@@ -156,10 +156,10 @@ module.exports = function(){
         });
     });
 
-	router.delete('/:name', function(req, res){
+	router.delete('/:id', function(req, res){
 		var mysql = req.app.get('mysql');
-		var sql = "DELETE FROM stars WHERE name = ?";
-		var inserts = [req.params.name];
+		var sql = "DELETE FROM stars WHERE id = ?";
+		var inserts = [req.params.id];
 		sql = mysql.pool.query(sql, inserts, function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
