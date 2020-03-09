@@ -1,0 +1,10 @@
+<html>
+<h1>Update {{stars.name}}:</h1>
+<form id="update-star" action="/stars" method="post">
+    Name: <input type="text" name="name" value="{{stars.name}}"><br>
+    System: <input type="text" name="system" value="{{stars.system}}"><br>
+    Type: <input type="text" name="type" value="{{stars.type}}"><br>
+    Age: <input type="number" name="age" value="{{stars.age}}"><br>
+</form>
+<button onclick="updateStar({{stars.id}})">Update</button>
+</html>

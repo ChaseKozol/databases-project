@@ -205,6 +205,25 @@ module.exports = function(){
 
 		})
 	})
+	
+	//update star
+	router.put('/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        console.log(req.body)
+        console.log(req.params.id)
+        var sql = "UPDATE stars SET name=?, system=?, type=?, age=? WHERE id=?";
+        var inserts = [req.body.name, req.body.system, req.body.type, req.body.age, req.params.id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
 
 	return router;
 }();

@@ -13,8 +13,8 @@
 			<label for="filter-name">Name</label>
 			<div class="filter-input"><input type="text" name="filter-name"></div>
 
-			<label for="filter-galaxy">Galaxy</label>
-			<div class="filter-input"><input type="text" name="filter-galaxy"></div>
+			<label for="filter-system">System</label>
+			<div class="filter-input"><input type="text" name="filter-system"></div>
 
 			<label for="filter-planet">Planet</label>
 			<div class="filter-input"><input type="text" name="filter-planet"></div>
@@ -42,7 +42,7 @@
 		<td>{{system}}</td>
 		<td>{{type}}</td>
 		<td>{{age}}</td>
-		<td><button type="button" onclick="deleteStar({{id}})" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+		<td><button type="button" onclick="deleteStar({{id}})" class="delete-button">Delete</button><button type="button" onclick="updateStar({{id}})" class="update-button">Update</button></td>
 	  </tr>
 	  {{/each}}
 	</table>

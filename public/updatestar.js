@@ -1,8 +1,8 @@
-function updateStar(name){
+function updateStar(id){
     $.ajax({
-        url: '/stars/' + name,
+        url: '/' + id,
         type: 'PUT',
-        data: $('#update-person').serialize(),
+        data: $('#update-star').serialize(),
         success: function(result){
             window.location.replace("./");
         }
