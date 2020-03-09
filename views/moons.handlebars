@@ -31,11 +31,11 @@
 		</tr>
 		{{#each moons}}
 		<tr>
-			<td><img src="/static/moons/{{name}}.jpg" alt="{{name}}" style="width:auto;height:150px;"></td>
-			<td>{{name}}</td>
-			<td>{{planet_orbiting}}</td>
+			<td><img src="/static/moons/{{moon_name}}.jpg" alt="{{moon_name}}" style="width:auto;height:150px;"></td>
+			<td>{{moon_name}}</td>
+			<td>{{planet_name}}</td>
 			<td>{{diameter}} mi</td>
-			<td><button type="button" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
+			<td><button type="button" onclick="deleteMoon({{id}})" class="delete-button">Delete</button><button type="button" class="update-button">Update</button></td>
 		</tr>
 		{{/each}}
 	</table>
@@ -46,7 +46,7 @@
 			<span>Add Moon</span>
 			</div>
 			Name: <input type="text" name="name"><br>
-			Planet Orbited: <input type="number" name="planet_orbited"><br>
+			Planet Orbited: <input type="text" name="planet_orbiting"><br>
 			Diameter: <input type="number" name="diameter"><br>
 			<input type="submit" value="Add Moon">
 			<input type="submit" id="form-cancel" value="Cancel"

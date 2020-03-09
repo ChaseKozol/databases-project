@@ -130,7 +130,7 @@ module.exports = function(){
 
 	router.post('/planets', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO planets (name, diameter, period, num_moons) VALUES (?,?,?,?); INSERT INTO planet_orbit (star_name, planet_name) VALUES (SELECT id FROM stars WHERE name = ?,SELECT id FROM planets WHERE name = ?);";
+        var sql = "INSERT INTO planets (name, diameter, period, num_moons) VALUES (?,?,?,?); INSERT INTO planet_orbit (star_id, planet_id) VALUES ((SELECT id FROM stars WHERE name = ?),(SELECT id FROM planets WHERE name = ?));";
         var inserts = [req.body.name, req.body.diameter, req.body.period, req.body.num_moons, req.body.star_name, req.body.name];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
@@ -145,7 +145,7 @@ module.exports = function(){
 
 	router.post('/moons', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "INSERT INTO moons (name, diameter, planet_orbiting) VALUES (?,?,?)";
+        var sql = "INSERT INTO moons (name, diameter, planet_orbiting) VALUES (?,?,(SELECT id FROM planets WHERE name = ?))";
         var inserts = [req.body.name, req.body.diameter, req.body.planet_orbiting];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
