@@ -17,7 +17,8 @@ CREATE TABLE `stars` (
 	`system` varchar(255),
 	`type` varchar(255) NOT NULL,
 	`age` bigint(11),
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	CONSTRAINT uc_stars UNIQUE (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -43,7 +44,8 @@ CREATE TABLE `planets` (
 	`diameter` int(11),
 	`period` int(11) NOT NULL,
 	`num_moons` int(11),
-	PRIMARY KEY (`id`)
+	PRIMARY KEY (`id`),
+	CONSTRAINT uc_planets UNIQUE (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -107,6 +109,7 @@ CREATE TABLE `moons` (
 	`diameter` int(11) NOT NULL,
 	`planet_orbiting` int(11),
 	PRIMARY KEY (`id`),
+	CONSTRAINT uc_moons UNIQUE (`name`),
 	CONSTRAINT `moons_ibfk_1` FOREIGN KEY (`planet_orbiting`) REFERENCES `planets` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
