@@ -45,6 +45,17 @@ module.exports = function(){
 			complete();
 		});
 	}
+	
+	function getCompositions(res, mysql, context, complete){
+		mysql.pool.query("SELECT id, star_name, element_name FROM star_composition", function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.elements = results;
+			complete();
+		});
+	}
 
 	/*Display stars*/
 
@@ -110,7 +121,25 @@ module.exports = function(){
 
 		}
 	});
+	
+	/*Display compositions*/
+	
+	router.get('/compositions', function(req, res){	
+		var callbackCount = 0;
+		var context = {};
+		var mysql = req.app.get('mysql');
+		getElements(res, mysql, context, complete);
+		function complete(){
+		callbackCount++;
+			if(callbackCount >= 1){
+				res.render('compositions', context);
+			}
 
+		}
+	});
+	
+	//dml
+	
 	router.post('/', function(req, res){
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO stars (name, system, type, age) VALUES (?,?,?,?)";

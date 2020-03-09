@@ -12,6 +12,7 @@
 
 DROP TABLE IF EXISTS `stars`;
 CREATE TABLE `stars` (
+	id int INVISIBLE NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`system` varchar(255),
 	`type` varchar(255) NOT NULL,
@@ -37,6 +38,7 @@ INSERT INTO `stars` (`name`, `system`, `type`, `age`) VALUES
 
 DROP TABLE IF EXISTS `planets`;
 CREATE TABLE `planets` (
+	id int INVISIBLE NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`diameter` int(11),
 	`period` int(11) NOT NULL,
@@ -68,6 +70,7 @@ INSERT INTO `planets` (`name`, `diameter`, `period`, `num_moons`) VALUES
 
 DROP TABLE IF EXISTS `planet_orbit`;
 CREATE TABLE `planet_orbit` (
+	id int INVISIBLE NOT NULL AUTO_INCREMENT,
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`star_name` varchar(255) NOT NULL,
 	`planet_name` varchar(255) NOT NULL,
@@ -100,6 +103,7 @@ INSERT INTO `planet_orbit` (`star_name`, `planet_name`) VALUES
 
 DROP TABLE IF EXISTS `moons`;
 CREATE TABLE `moons` (
+	id int INVISIBLE NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`diameter` int(11) NOT NULL,
 	`planet_orbiting` varchar(255),

@@ -1,0 +1,25 @@
+<header>
+	<span>Elements</span>
+	<ul id="menu">
+		<li><a href="/">Stars</a></li>
+		<li><a href="/planets">Planets</a></li>
+		<li><a href="/moons">Moons</a></li>
+		<li><a href="/elements">Elements</a></li>
+	</ul>
+</header>
+<main>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Star</th>
+			<th>Element</th>
+		</tr>
+		{{#each star_composition}}
+		<tr>
+			<td>{{id}}</td>
+			<td>{{star_name}}</td>
+			<td>{{element_name}}</td>
+		</tr>
+		{{/each}}
+	</table>
+</main>
