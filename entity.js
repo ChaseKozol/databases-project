@@ -51,7 +51,7 @@ module.exports = function(){
 	router.get('/', function(req, res){	
 		var callbackCount = 0;
 		var context = {};
-		context.jsscripts = ["delete.js"];
+		context.jsscripts = ["delete.js", "update.js"];
 		var mysql = req.app.get('mysql');
 		getStars(res, mysql, context, complete);
 		function complete(){
@@ -68,7 +68,7 @@ module.exports = function(){
 	router.get('/planets', function(req, res){	
 		var callbackCount = 0;
 		var context = {};
-		context.jsscripts = ["delete.js"];
+		context.jsscripts = ["delete.js", "update.js"];
 		var mysql = req.app.get('mysql');
 		getPlanets(res, mysql, context, complete);
 		function complete(){
@@ -85,7 +85,7 @@ module.exports = function(){
 	router.get('/moons', function(req, res){	
 		var callbackCount = 0;
 		var context = {};
-		context.jsscripts = ["delete.js"];
+		context.jsscripts = ["delete.js", "update.js"];
 		var mysql = req.app.get('mysql');
 		getMoons(res, mysql, context, complete);
 		function complete(){
@@ -176,8 +176,8 @@ module.exports = function(){
 
 	router.delete('/planets/:id', function(req, res){
 		var mysql = req.app.get('mysql');
-		var sql = "DELETE FROM planets WHERE id = ?";
-		var inserts = [req.params.id];
+		var sql = "DELETE FROM planet_orbit WHERE planet_id = ?; DELETE FROM planets WHERE id = ?;";
+		var inserts = [req.params.id, req.params.id];
 		sql = mysql.pool.query(sql, inserts, function(error, results, fields){
 			if(error){
 				res.write(JSON.stringify(error));
@@ -205,25 +205,6 @@ module.exports = function(){
 
 		})
 	})
-	
-	//update star
-	router.put('/:id', function(req, res){
-        var mysql = req.app.get('mysql');
-        console.log(req.body)
-        console.log(req.params.id)
-        var sql = "UPDATE stars SET name=?, system=?, type=?, age=? WHERE id=?";
-        var inserts = [req.body.name, req.body.system, req.body.type, req.body.age, req.params.id];
-        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
-            if(error){
-                console.log(error)
-                res.write(JSON.stringify(error));
-                res.end();
-            }else{
-                res.status(200);
-                res.end();
-            }
-        });
-    });
 
 	return router;
 }();
