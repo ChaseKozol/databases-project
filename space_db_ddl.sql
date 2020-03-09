@@ -12,12 +12,13 @@
 
 DROP TABLE IF EXISTS `stars`;
 CREATE TABLE `stars` (
-	id int INVISIBLE NOT NULL AUTO_INCREMENT,
+	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`system` varchar(255),
 	`type` varchar(255) NOT NULL,
 	`age` bigint(11),
-	PRIMARY KEY (`name`)
+	PRIMARY KEY (`id`),
+	CONSTRAINT uc_stars UNIQUE (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -38,12 +39,13 @@ INSERT INTO `stars` (`name`, `system`, `type`, `age`) VALUES
 
 DROP TABLE IF EXISTS `planets`;
 CREATE TABLE `planets` (
-	id int INVISIBLE NOT NULL AUTO_INCREMENT,
+	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`diameter` int(11),
 	`period` int(11) NOT NULL,
 	`num_moons` int(11),
-	PRIMARY KEY (`name`)
+	PRIMARY KEY (`id`),
+	CONSTRAINT uc_planets UNIQUE (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -72,28 +74,28 @@ DROP TABLE IF EXISTS `planet_orbit`;
 CREATE TABLE `planet_orbit` (
 	id int INVISIBLE NOT NULL AUTO_INCREMENT,
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`star_name` varchar(255) NOT NULL,
-	`planet_name` varchar(255) NOT NULL,
+	`star_id` int(11) NOT NULL,
+	`planet_id` int(11) NOT NULL,
 	PRIMARY KEY (`id`),
-	CONSTRAINT `planet_orbit_ibfk_1` FOREIGN KEY (`star_name`) REFERENCES `stars` (`name`),
-	CONSTRAINT `planet_orbit_ibfk_2` FOREIGN KEY (`planet_name`) REFERENCES `planets` (`name`)
+	CONSTRAINT `planet_orbit_ibfk_1` FOREIGN KEY (`star_id`) REFERENCES `stars` (`id`),
+	CONSTRAINT `planet_orbit_ibfk_2` FOREIGN KEY (`planet_id`) REFERENCES `planets` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `planet_orbit`
 --
 
-INSERT INTO `planet_orbit` (`star_name`, `planet_name`) VALUES
-('Sol', 'Mercury'),
-('Sol', 'Venus'),
-('Sol', 'Earth'),
-('Sol', 'Mars'),
-('Sol', 'Jupiter'),
-('Sol', 'Saturn'),
-('Sol', 'Uranus'),
-('Sol', 'Neptune'),
-('Sol', 'Pluto'),
-('Proxima Centauri', 'Proxima Centauri b');
+INSERT INTO `planet_orbit` (`star_id`, `planet_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(4, 10);
 
 -- --------------------------------------------------------
 
@@ -103,12 +105,13 @@ INSERT INTO `planet_orbit` (`star_name`, `planet_name`) VALUES
 
 DROP TABLE IF EXISTS `moons`;
 CREATE TABLE `moons` (
-	id int INVISIBLE NOT NULL AUTO_INCREMENT,
+	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`diameter` int(11) NOT NULL,
-	`planet_orbiting` varchar(255),
-	PRIMARY KEY (`name`),
-	CONSTRAINT `moons_ibfk_1` FOREIGN KEY (`planet_orbiting`) REFERENCES `planets` (`name`)
+	`planet_orbiting` int(11),
+	PRIMARY KEY (`id`),
+	CONSTRAINT uc_moons UNIQUE (`name`),
+	CONSTRAINT `moons_ibfk_1` FOREIGN KEY (`planet_orbiting`) REFERENCES `planets` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -116,20 +119,20 @@ CREATE TABLE `moons` (
 --
 
 INSERT INTO `moons` (`name`, `diameter`, `planet_orbiting`) VALUES
-('Luna', 2159, 'Earth'),
-('Phobos', 8, 'Mars'),
-('Deimos', 14, 'Mars'),
-('Io', 2159, 'Jupiter'),
-('Europa', 1940, 'Jupiter'),
-('Callisto', 2995, 'Jupiter'),
-('Mimas', 246, 'Saturn'),
-('Enceladus', 313, 'Saturn'),
-('Tethys', 660, 'Saturn'),
-('Umbriel', 727, 'Uranus'),
-('Titania', 980, 'Uranus'),
-('Oberon', 946, 'Uranus'),
-('Triton', 1682, 'Neptune'),
-('Charon', 753, 'Pluto');
+('Luna', 2159, 3),
+('Phobos', 8, 4),
+('Deimos', 14, 4),
+('Io', 2159, 5),
+('Europa', 1940, 5),
+('Callisto', 2995, 5),
+('Mimas', 246, 6),
+('Enceladus', 313, 6),
+('Tethys', 660, 6),
+('Umbriel', 727, 7),
+('Titania', 980, 7),
+('Oberon', 946, 7),
+('Triton', 1682, 8),
+('Charon', 753, 9);
 
 -- --------------------------------------------------------
 
@@ -139,16 +142,16 @@ INSERT INTO `moons` (`name`, `diameter`, `planet_orbiting`) VALUES
 
 DROP TABLE IF EXISTS `elements`;
 CREATE TABLE `elements` (
-	`number` int(11) NOT NULL,
+	`id` int(11) NOT NULL,
 	`name` varchar(255) NOT NULL,
-	PRIMARY KEY (`number`)
+	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `elements`
 --
 
-INSERT INTO `elements` (`number`, `name`) VALUES
+INSERT INTO `elements` (`id`, `name`) VALUES
 (1, 'Hydrogen'),
 (2, 'Helium'),
 (3, 'Lithium'),
@@ -170,11 +173,11 @@ INSERT INTO `elements` (`number`, `name`) VALUES
 DROP TABLE IF EXISTS `star_composition`;
 CREATE TABLE `star_composition` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`star_name` varchar(255) NOT NULL,
-	`element_name` varchar(255) NOT NULL,
+	`star_id` int(11) NOT NULL,
+	`element_id` int(11) NOT NULL,
 	PRIMARY KEY (`id`),
-	CONSTRAINT `star_composition_ibfk_1` FOREIGN KEY (`star_name`) REFERENCES `stars` (`name`),
-	CONSTRAINT `star_composition_ibfk_2` FOREIGN KEY (`element_name`) REFERENCES `elements` (`name`)
+	CONSTRAINT `star_composition_ibfk_1` FOREIGN KEY (`star_id`) REFERENCES `stars` (`id`),
+	CONSTRAINT `star_composition_ibfk_2` FOREIGN KEY (`element_id`) REFERENCES `elements` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -186,11 +189,11 @@ CREATE TABLE `star_composition` (
 DROP TABLE IF EXISTS `planet_composition`;
 CREATE TABLE `planet_composition` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`planet_name` varchar(255) NOT NULL,
-	`element_name` varchar(255) NOT NULL,
+	`planet_id` int(11) NOT NULL,
+	`element_id` int(11) NOT NULL,
 	PRIMARY KEY (`id`),
-	CONSTRAINT `planet_composition_ibfk_1` FOREIGN KEY (`planet_name`) REFERENCES `planets` (`name`),
-	CONSTRAINT `planet_composition_ibfk_2` FOREIGN KEY (`element_name`) REFERENCES `elements` (`name`)
+	CONSTRAINT `planet_composition_ibfk_1` FOREIGN KEY (`planet_id`) REFERENCES `planets` (`id`),
+	CONSTRAINT `planet_composition_ibfk_2` FOREIGN KEY (`element_id`) REFERENCES `elements` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -202,9 +205,9 @@ CREATE TABLE `planet_composition` (
 DROP TABLE IF EXISTS `moon_composition`;
 CREATE TABLE `moon_composition` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
-	`moon_name` varchar(255) NOT NULL,
-	`element_name` varchar(255) NOT NULL,
+	`moon_id` int(11) NOT NULL,
+	`element_id` int(11) NOT NULL,
 	PRIMARY KEY (`id`),
-	CONSTRAINT `moon_composition_ibfk_1` FOREIGN KEY (`moon_name`) REFERENCES `moons` (`name`),
-	CONSTRAINT `moon_composition_ibfk_2` FOREIGN KEY (`element_name`) REFERENCES `elements` (`name`)
+	CONSTRAINT `moon_composition_ibfk_1` FOREIGN KEY (`moon_id`) REFERENCES `moons` (`id`),
+	CONSTRAINT `moon_composition_ibfk_2` FOREIGN KEY (`element_id`) REFERENCES `elements` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
