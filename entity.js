@@ -12,6 +12,19 @@ module.exports = function(){
 			complete();
 		});
 	}
+	
+	function getStar(res, mysql, context, id, complete){
+		var sql = "SELECT id, name, system, type, age FROM stars WHERE id = ?";
+		var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.star = results[0];
+            complete();
+        });
+	}
 
 	function getPlanets(res, mysql, context, complete){
 		mysql.pool.query("SELECT planet_id, planets.name, diameter, period, stars.name as star_name, num_moons FROM planets INNER JOIN planet_orbit ON planets.id = planet_orbit.planet_id INNER JOIN stars on planet_orbit.star_id = stars.id", function(error, results, fields){
@@ -207,6 +220,21 @@ module.exports = function(){
 	})
 	
 	//update star
+	 router.get('/:id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["updatestar.js"];
+        var mysql = req.app.get('mysql');
+        getStar(res, mysql, context, req.params.id, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 2){
+                res.render('update-star', context);
+            }
+
+        }
+    });
+	
 	router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
         console.log(req.body)
