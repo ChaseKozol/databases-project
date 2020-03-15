@@ -38,11 +38,11 @@
 	  <tr>
 		<td><img src="/static/planets/{{name}}.jpg" alt="{{name}}"></td>
 		<td>{{name}}</td>
-		<td>{{diameter}} mi</td>
-		<td>{{period}} ED</td>
+		<td>{{#if diameter}}{{diameter}} mi{{else}}Unknown{{/if}}</td>
+		<td>{{#if period}}{{period}} ED{{else}}Unknown{{/if}}</td>
 		<td>{{star_name}}</td>
 		<td>{{num_moons}}</td>
-		<td><button type="button" onclick="deletePlanet({{planet_id}})" class="delete-button">Delete</button><button type="button" onclick="updatePlanet({{id}})" class="update-button">Update</button></td>
+		<td><button type="button" onclick="deletePlanet({{planet_id}})" class="delete-button">Delete</button><button type="button"class="update-button"><a href="/planets/{{planet_id}}">Update</a></button></td>
 	  </tr>
 	  {{/each}}
 	</table>

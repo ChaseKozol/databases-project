@@ -33,9 +33,9 @@
 		<tr>
 			<td><img src="/static/moons/{{moon_name}}.jpg" alt="{{moon_name}}" style="width:auto;height:150px;"></td>
 			<td>{{moon_name}}</td>
-			<td>{{planet_name}}</td>
-			<td>{{diameter}} mi</td>
-			<td><button type="button" onclick="deleteMoon({{id}})" class="delete-button">Delete</button><button type="button" onclick="updateMoon({{id}})" class="update-button">Update</button></td>
+			<td>{{#if planet_name}}{{planet_name}}{{else}}None{{/if}}</td>
+			<td>{{#if diameter}}{{diameter}} mi{{else}}Unknown{{/if}}</td>
+			<td><button type="button" onclick="deleteMoon({{id}})" class="delete-button">Delete</button><button type="button"class="update-button"><a href="/moons/{{id}}">Update</a></button></td>
 		</tr>
 		{{/each}}
 	</table>
