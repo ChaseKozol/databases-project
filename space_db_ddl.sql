@@ -42,7 +42,7 @@ CREATE TABLE `planets` (
 	`id` int(11) NOT NULL AUTO_INCREMENT,
 	`name` varchar(255) NOT NULL,
 	`diameter` int(11),
-	`period` int(11) NOT NULL,
+	`period` int(11),
 	`num_moons` int(11),
 	PRIMARY KEY (`id`),
 	CONSTRAINT uc_planets UNIQUE (`name`)

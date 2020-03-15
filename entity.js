@@ -37,6 +37,19 @@ module.exports = function(){
 		});
 	}
 
+	function getPlanet(res, mysql, context, id, complete){
+		var sql = "SELECT planet_id, planets.name, diameter, period, stars.name as star_name, num_moons FROM planets INNER JOIN planet_orbit ON planets.id = planet_orbit.planet_id INNER JOIN stars on planet_orbit.star_id = stars.id WHERE planet_id = ?";
+		var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.planet = results[0];
+            complete();
+        });
+	}
+
 	function getMoons(res, mysql, context, complete){
 		mysql.pool.query("SELECT moons.id, moons.name as moon_name, planets.name as planet_name, moons.diameter FROM moons INNER JOIN planets on planet_orbiting = planets.id", function(error, results, fields){
 			if(error){
@@ -46,6 +59,19 @@ module.exports = function(){
 			context.moons = results;
 			complete();
 		});
+	}
+
+	function getMoon(res, mysql, context, id, complete){
+		var sql = "SELECT moons.id, moons.name as moon_name, planets.name as planet_name, moons.diameter FROM moons INNER JOIN planets on planet_orbiting = planets.id WHERE moons.id = ?";
+		var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.moon = results[0];
+            complete();
+        });
 	}
 
 	function getElements(res, mysql, context, complete){
@@ -64,7 +90,7 @@ module.exports = function(){
 	router.get('/', function(req, res){	
 		var callbackCount = 0;
 		var context = {};
-		context.jsscripts = ["delete.js", "update.js"];
+		context.jsscripts = ["delete.js", "update.js", "filter.js"];
 		var mysql = req.app.get('mysql');
 		getStars(res, mysql, context, complete);
 		function complete(){
@@ -81,7 +107,7 @@ module.exports = function(){
 	router.get('/planets', function(req, res){	
 		var callbackCount = 0;
 		var context = {};
-		context.jsscripts = ["delete.js", "update.js"];
+		context.jsscripts = ["delete.js", "update.js", "filter.js"];
 		var mysql = req.app.get('mysql');
 		getPlanets(res, mysql, context, complete);
 		function complete(){
@@ -98,7 +124,7 @@ module.exports = function(){
 	router.get('/moons', function(req, res){	
 		var callbackCount = 0;
 		var context = {};
-		context.jsscripts = ["delete.js", "update.js"];
+		context.jsscripts = ["delete.js", "update.js", "filter.js"];
 		var mysql = req.app.get('mysql');
 		getMoons(res, mysql, context, complete);
 		function complete(){
@@ -241,6 +267,75 @@ module.exports = function(){
         console.log(req.params.id)
         var sql = "UPDATE stars SET name=?, system=?, type=?, age=? WHERE id=?";
         var inserts = [req.body.name, req.body.system, req.body.type, req.body.age, req.params.id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
+
+    //update planet
+	 router.get('/planets/:id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["update.js"];
+        var mysql = req.app.get('mysql');
+        getPlanet(res, mysql, context, req.params.id, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 1){
+                res.render('update-planet', context);
+            }
+
+        }
+    });
+	
+	router.put('/planets/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        console.log(req.body)
+        console.log(req.params.id)
+        var sql = "UPDATE planets SET name=?, diameter=?, period=?, num_moons=? WHERE id=?";
+        var inserts = [req.body.name, req.body.diameter, req.body.period, req.body.num_moons, req.params.id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+                res.status(200);
+                res.end();
+            }
+        });
+    });
+
+    //update moon
+	 router.get('/moons/:id', function(req, res){
+        callbackCount = 0;
+        var context = {};
+        context.jsscripts = ["update.js"];
+        var mysql = req.app.get('mysql');
+        getMoon(res, mysql, context, req.params.id, complete);
+        getPlanets(res, mysql, context, complete);
+        function complete(){
+            callbackCount++;
+            if(callbackCount >= 2){
+                res.render('update-moon', context);
+            }
+
+        }
+    });
+	
+	router.put('/moons/:id', function(req, res){
+        var mysql = req.app.get('mysql');
+        console.log(req.body)
+        console.log(req.params.id)
+        var sql = "UPDATE moons SET name=?, diameter=?, planet_orbiting=? WHERE id=?";
+        var inserts = [req.body.name, req.body.diameter, req.body.planet_orbiting, req.params.id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(error)

@@ -1,0 +1,14 @@
+<html>
+<div id="form-box">
+	<div id="form-header">
+		<span>Update {{planet.name}}</span>
+	</div>
+	<form id="update-planet" action="/planets" method="post">
+	    Name: <input type="text" name="name" value="{{planet.name}}"><br>
+	    Diameter: <input type="number" name="diameter" value="{{planet.diameter}}"><br>
+	    Period: <input type="number" name="period" value="{{planet.period}}"><br>
+	    # moons: <input type="number" name="num_moons" value="{{planet.num_moons}}"><br>
+	</form>
+	<button onclick="updatePlanet({{planet.planet_id}})">Update</button>
+</div>
+</html>

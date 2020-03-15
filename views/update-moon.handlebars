@@ -1,0 +1,17 @@
+<html>
+<div id="form-box">
+	<div id="form-header">
+		<span>Update {{moon.moon_name}}</span>
+	</div>
+	<form id="update-moon" action="/moons" method="post">
+	    Name: <input type="text" name="name" value="{{moon.moon_name}}"><br>
+	    Diameter: <input type="number" name="diameter" value="{{moon.diameter}}"><br>
+	    Planet Orbited: <select name="planet_orbiting">
+	    	{{#each planets}}
+	    	<option value="{{planet_id}}">{{name}}</option>
+	    	{{/each}}
+	    </select><br>
+	</form>
+	<button onclick="updateMoon({{moon.id}})">Update</button>
+</div>
+</html>
