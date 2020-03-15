@@ -1,10 +1,14 @@
 <html>
-<h1>Update {{star.name}}:</h1>
-<form id="update-star" action="/stars" method="post">
-    Name: <input type="text" name="name" value="{{star.name}}"><br>
-    System: <input type="text" name="system" value="{{star.system}}"><br>
-    Type: <input type="text" name="type" value="{{star.type}}"><br>
-    Age: <input type="number" name="age" value="{{star.age}}"><br>
-</form>
-<button onclick="updateStar({{star.id}})">Update</button>
+<div id="form-box">
+	<div id="form-header">
+		<span>Update {{star.name}}</span>
+	</div>
+	<form id="update-star" action="/stars" method="post">
+	    Name: <input type="text" name="name" value="{{star.name}}"><br>
+	    System: <input type="text" name="system" value="{{star.system}}"><br>
+	    Type: <input type="text" name="type" value="{{star.type}}"><br>
+	    Age: <input type="number" name="age" value="{{star.age}}"><br>
+	</form>
+	<button onclick="updateStar({{star.id}})">Update</button>
+</div>
 </html>

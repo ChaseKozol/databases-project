@@ -223,12 +223,12 @@ module.exports = function(){
 	 router.get('/:id', function(req, res){
         callbackCount = 0;
         var context = {};
-        context.jsscripts = ["updatestar.js"];
+        context.jsscripts = ["update.js"];
         var mysql = req.app.get('mysql');
         getStar(res, mysql, context, req.params.id, complete);
         function complete(){
             callbackCount++;
-            if(callbackCount >= 2){
+            if(callbackCount >= 1){
                 res.render('update-star', context);
             }
 

@@ -6,20 +6,22 @@ body {
 }
 
 header {
-	height: 150px;
+	height: 100px;
 	color: #ffffff;
 	font-size: 50px;
+	padding: 25px;
 }
 
 header span {
-	line-height: 150px;
-	vertical-align: top;
+	line-height: 100px;
 	width: 100%;
 }
 
 ul {
 	list-style: none;
 	padding: 0px;
+	margin: 0px;
+	line-height: 100px;
 }
 
 #menu, #menu li {
@@ -34,10 +36,10 @@ li a {
 
 .filter {
 	background-color: #000000;
-	height: 100px;
-	margin: 25px;
+	width: 80%;
+	margin: 0px auto;
 	line-height: 50px;
-	border: 2px solid white;
+	border: 2px solid #4d4d4d;
 	color: #ffffff;
 }
 
@@ -74,8 +76,10 @@ table {
 	color: #ffffff;
 	width: 80%;
 	background-color: #000000;
-	margin: 0 auto;
+	margin: 25px auto;
+	padding: 10px;
 	text-align: center;
+	border: 2px solid #4d4d4d;
 }
 
 table img {
@@ -83,11 +87,12 @@ table img {
 	width: auto;
 }
 
-button {
+button, button a {
 	color: #ffffff;
 	background-color: #4d4d4d;
 	border: none;
 	padding: 5px;
+	text-decoration: none;
 }
 
 #form-box {
