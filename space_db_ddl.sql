@@ -179,6 +179,12 @@ CREATE TABLE `star_composition` (
 	CONSTRAINT `star_composition_ibfk_2` FOREIGN KEY (`element_id`) REFERENCES `elements` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `star_composition` (`star_id`, `element_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -195,6 +201,12 @@ CREATE TABLE `planet_composition` (
 	CONSTRAINT `planet_composition_ibfk_2` FOREIGN KEY (`element_id`) REFERENCES `elements` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `planet_composition` (`planet_id`, `element_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -210,3 +222,9 @@ CREATE TABLE `moon_composition` (
 	CONSTRAINT `moon_composition_ibfk_1` FOREIGN KEY (`moon_id`) REFERENCES `moons` (`id`),
 	CONSTRAINT `moon_composition_ibfk_2` FOREIGN KEY (`element_id`) REFERENCES `elements` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `moon_composition` (`moon_id`, `element_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1);

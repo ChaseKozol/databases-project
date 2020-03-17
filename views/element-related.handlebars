@@ -1,0 +1,79 @@
+<body>
+	<header>
+		<span>{{element.name}}</span>
+		<ul id="menu">
+			<li><a href="/">Stars</a></li>
+			<li><a href="/planets">Planets</a></li>
+			<li><a href="/moons">Moons</a></li>
+			<li><a href="/elements">Elements</a></li>
+		</ul>
+	</header>
+	<main>
+		<table>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Atomic Number</th>
+			</tr>
+			<tr>
+				<td><img src="/static/elements/{{element.name}}.png" alt="{{element.name}}" style="width:250px;height:150px;"></td>
+				<td>{{element.name}}</td>
+				<td>{{element.id}}</td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+			<th></th>
+			<th>Name</th>
+			<th>System</th>
+			<th>Type</th>
+			<th>Age</th>
+			</tr>
+		  {{#each stars}}
+		  <tr>
+			<td><img src="/static/stars/{{name}}.jpg" alt="{{name}}" style="width:auto;height:150px;"></td>
+			<td>{{name}}</td>
+			<td>{{system}}</td>
+			<td>{{type}}</td>
+			<td>{{#if age}}{{age}}{{else}}Unknown{{/if}}</td>
+		  </tr>
+		  {{/each}}
+		</table>
+		<table>
+		  <tr>
+			<th></th>
+			<th>Name</th>
+			<th>Diameter</th>
+			<th>Orbital Period</th>
+			<th>Main Star</th>
+			<th>Number Of Moons</th>
+		  </tr>
+		  {{#each planets}}
+		  <tr>
+			<td><img src="/static/planets/{{name}}.jpg" alt="{{name}}"></td>
+			<td>{{name}}</td>
+			<td>{{#if diameter}}{{diameter}} mi{{else}}Unknown{{/if}}</td>
+			<td>{{#if period}}{{period}} ED{{else}}Unknown{{/if}}</td>
+			<td>{{star_name}}</td>
+			<td>{{num_moons}}</td>
+		  </tr>
+		  {{/each}}
+		</table>
+		<table>
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Planet</th>
+				<th>Diameter</th>
+			</tr>
+			{{#each moons}}
+			<tr>
+				<td><img src="/static/moons/{{moon_name}}.jpg" alt="{{moon_name}}" style="width:auto;height:150px;"></td>
+				<td>{{moon_name}}</td>
+				<td>{{#if planet_name}}{{planet_name}}{{else}}None{{/if}}</td>
+				<td>{{#if diameter}}{{diameter}} mi{{else}}Unknown{{/if}}</td>
+			</tr>
+			{{/each}}
+		</table>
+	</main>
+</body>

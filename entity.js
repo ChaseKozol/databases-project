@@ -85,6 +85,46 @@ module.exports = function(){
 		});
 	}
 
+	function getElementRelated(res, mysql, context, id, complete){
+		var sql = "SELECT name, id FROM elements WHERE id=?";
+		var inserts = [id];
+		mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.element = results[0];
+			complete();
+		});
+		sql = "SELECT stars.name, system, type, age FROM stars INNER JOIN star_composition ON stars.id = star_id INNER JOIN elements ON element_id = elements.id WHERE elements.id=?";
+		mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.stars = results;
+			complete();
+		});
+		sql = "SELECT planets.name, diameter, period, stars.name as star_name, num_moons FROM planets INNER JOIN planet_orbit ON planets.id = planet_orbit.planet_id INNER JOIN stars on planet_orbit.star_id = stars.id INNER JOIN planet_composition ON planets.id = planet_composition.planet_id INNER JOIN elements ON element_id = elements.id WHERE elements.id=?";
+		mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.planets = results;
+			complete();
+		});
+		sql = "SELECT moons.id, moons.name as moon_name, planets.name as planet_name, moons.diameter FROM moons INNER JOIN planets on planet_orbiting = planets.id INNER JOIN moon_composition ON moons.id = moon_composition.moon_id INNER JOIN elements ON element_id = elements.id WHERE elements.id=?";
+		mysql.pool.query(sql, inserts, function(error, results, fields){
+			if(error){
+				res.write(JSON.stringify(error));
+				res.end();
+			}
+			context.moons = results;
+			complete();
+		});
+	}
+
 	/*Display stars*/
 
 	router.get('/', function(req, res){	
@@ -147,6 +187,22 @@ module.exports = function(){
 		callbackCount++;
 			if(callbackCount >= 1){
 				res.render('elements', context);
+			}
+
+		}
+	});
+
+	/*Get entities related to one element*/
+
+	router.get('/elements/:id', function(req, res){	
+		var callbackCount = 0;
+		var context = {};
+		var mysql = req.app.get('mysql');
+		getElementRelated(res, mysql, context, req.params.id, complete);
+		function complete(){
+		callbackCount++;
+			if(callbackCount >= 4){
+				res.render('element-related', context);
 			}
 
 		}
