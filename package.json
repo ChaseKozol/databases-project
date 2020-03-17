@@ -1,0 +1,15 @@
+{
+  "name": "Databases-Project",
+  "version": "1.0.0",
+  "description": "epstein didnt",
+  "main": "main.js",
+  "author": "Chase Kozol, Alexander Smith",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.2",
+    "express-handlebars": "^2.0.1",
+    "express-session": "^1.11.3",
+    "mysql": "^2.8.0"
+  }
+}
