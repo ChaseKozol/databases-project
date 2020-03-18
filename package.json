@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "epstein didnt",
   "main": "main.js",
-  "author": "Chase Kozol, Alexander Smith",
+  "contributors": "Chase Kozol, Alexander Smith",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.13.3",
